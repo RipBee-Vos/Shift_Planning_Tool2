@@ -26,14 +26,14 @@ on:
 
 env:
   # Change this to the name of your Azure Web App resource
-  AZURE_WEBAPP_NAME: shift-planning-frontend
+  AZURE_WEBAPP_NAME:frontend
   
   # If your package.json and code are in the repo root, leave this as '.'
   # Otherwise, set it to the subfolder containing your package.json
-  AZURE_WEBAPP_PACKAGE_PATH: 'frontend.'
+AZURE_WEBAPP_PACKAGE_PATH: 'frontend'
   
   # The Node.js version to use
-  NODE_VERSION: '20.x'
+NODE_VERSION: '20.x'
 
 jobs:
   build-and-deploy:
