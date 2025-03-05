@@ -60,7 +60,7 @@ jobs:
 AZURE_WEBAPP_PACKAGE_PATH 
 
       - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
+        uses: azure-static-web-apps-red-moss-01673960f.yml
         
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
