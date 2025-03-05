@@ -26,14 +26,13 @@ on:
 
 env:
   # Change this to the name of your Azure Web App resource
-  AZURE_WEBAPP_NAME:frontend
-  
-  # If your package.json and code are in the repo root, leave this as '.'
-  # Otherwise, set it to the subfolder containing your package.json
-AZURE_WEBAPP_PACKAGE_PATH: 'frontend'
-  
-  # The Node.js version to use
-NODE_VERSION: '20.x'
+  AZURE_WEBAPP_NAME: shift-planning-frontend
+
+  # Set this to the subfolder containing package.json (if applicable)
+  AZURE_WEBAPP_PACKAGE_PATH: frontend
+
+  # Node.js version to use
+  NODE_VERSION: '20.x'
 
 jobs:
   build-and-deploy:
@@ -42,29 +41,21 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Change to frontend directory
-        run: cd frontend
-            
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
-            
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: cd frontend && npm install
+        run: npm install
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Build
-        run: npm run build      
-        
-        env:
-          AZURE_WEBAPP_NAME: shift-planning-frontend
-          AZURE_WEBAPP_PACKAGE_PATH: frontend
-          NODE_VERSION: '20.x'
+        run: npm run build
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Deploy to Azure Web App
         uses: Azure/static-web-apps-deploy@v1
-
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build
