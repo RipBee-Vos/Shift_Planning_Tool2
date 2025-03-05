@@ -42,6 +42,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+      - name: Change to frontend directory
+      run: cd frontend
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
