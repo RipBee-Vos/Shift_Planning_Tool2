@@ -1,14 +1,14 @@
 {
   "name": "shift_planning_tool2",
   "version": "1.0.0",
-  "description": "Shift Planning Tool",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "npm run build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {}
+    "next": "^15.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
