@@ -30,7 +30,11 @@ env:
   
   # If your package.json and code are in the repo root, leave this as '.'
   # Otherwise, set it to the subfolder containing your package.json
+<<<<<<< HEAD
   AZURE_WEBAPP_PACKAGE_PATH: 'frontend.'
+=======
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
+>>>>>>> 58e2324e (commit)
   
   # The Node.js version to use
   NODE_VERSION: '20.x'
@@ -42,8 +46,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+<<<<<<< HEAD
       - name: Change to frontend directory
       run: cd frontend
+=======
+>>>>>>> 58e2324e (commit)
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
