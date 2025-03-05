@@ -30,7 +30,7 @@ env:
   
   # If your package.json and code are in the repo root, leave this as '.'
   # Otherwise, set it to the subfolder containing your package.json
-  AZURE_WEBAPP_PACKAGE_PATH: '.'
+  AZURE_WEBAPP_PACKAGE_PATH: 'frontend.'
   
   # The Node.js version to use
   NODE_VERSION: '20.x'
