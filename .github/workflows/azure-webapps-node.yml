@@ -52,13 +52,12 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: cd frontend
-  npm install
+       run: cd frontend && npm install
 
       - name: Build
         run: npm run build
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
+       
+AZURE_WEBAPP_PACKAGE_PATH 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
