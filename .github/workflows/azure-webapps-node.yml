@@ -55,9 +55,12 @@ jobs:
         run: cd frontend && npm install
 
       - name: Build
-        run: npm run build
-       
-AZURE_WEBAPP_PACKAGE_PATH 
+        run: npm run build      
+        
+        env:
+          AZURE_WEBAPP_NAME: shift-planning-frontend
+          AZURE_WEBAPP_PACKAGE_PATH: frontend
+          NODE_VERSION: '20.x'
 
       - name: Deploy to Azure Web App
         uses: Azure/static-web-apps-deploy@v1
