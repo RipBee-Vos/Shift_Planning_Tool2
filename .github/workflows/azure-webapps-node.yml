@@ -38,8 +38,7 @@ jobs:
        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
      - name: Debug: List build directory
-       run: ls -la frontend/build
-
+       run: ls -la frontend/bbuild
      - name: Deploy to Azure Static Web App
        uses: Azure/static-web-apps-deploy@v1
        with:
