@@ -4,3 +4,5 @@ frontend/node_modules/
 *.node
 *.pack
 "node_modules/" 
+node_modules/ 
+.next/ 
