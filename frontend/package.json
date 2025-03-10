@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "shift-planner",
   "version": "1.0.0",
@@ -29,7 +28,7 @@
     ]
   }
 }
-=======
+
 {
   "name": "shift-planner",
   "version": "1.0.0",
@@ -60,4 +59,4 @@
     ]
   }
 }
->>>>>>> 58e2324e (commit)
+
