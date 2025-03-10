@@ -1,5 +1,5 @@
 {
-  "name": "shift-planner",
+  "name": "shift-planning-tool2",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -28,35 +28,3 @@
     ]
   }
 }
-
-{
-  "name": "shift-planner",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^1.8.1",
-    "bootstrap": "^5.3.3",
-    "dotenv": "^16.4.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
-
