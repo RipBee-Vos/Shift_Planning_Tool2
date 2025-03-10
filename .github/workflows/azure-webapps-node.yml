@@ -17,48 +17,34 @@
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
 
-name: Build and Deploy to Azure Static Web Apps
-
-on:
-  push:
-    branches:
-      - main
-
-env:
-  # Set the Static Web App Name
-  AZURE_WEBAPP_NAME: shift-planning-frontend
-
-  # Set this to the subfolder containing package.json (if applicable)
-  AZURE_WEBAPP_PACKAGE_PATH: frontend
-
-  # Node.js version
-  NODE_VERSION: '20.x'
-
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
+ build-and-deploy:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Check out code
+       uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+     - name: Set up Node.js
+       uses: actions/setup-node@v4
+       with:
+         node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+     - name: Install dependencies
+       run: npm install
+       working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-      - name: Build
-        run: npm run build
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+     - name: Build
+       run: npm run build
+       working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-      - name: Deploy to Azure Static Web App
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
-          app_location: "frontend"
-          output_location: "build"
+     - name: Debug: List build directory
+       run: ls -la frontend/build
+
+     - name: Deploy to Azure Static Web App
+       uses: Azure/static-web-apps-deploy@v1
+       with:
+         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+         repo_token: ${{ secrets.GITHUB_TOKEN }}
+         action: "upload"
+         app_location: "frontend"
+         output_location: "build"
