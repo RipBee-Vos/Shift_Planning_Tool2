@@ -12,7 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Node.js
-      uses: actions/setup-node@v1
+      use      repo_token: ${{ secrets.GITHUB_TOKEN }}
+      action: upload
+      app_location: frontend
+      output_location: build
+      api_location: "" actions/setup-node@v1
       with:
         node-version: '16'
     - name: Install dependencies
