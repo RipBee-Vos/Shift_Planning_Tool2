@@ -16,7 +16,7 @@
 # For more information on GitHub Actions for Azure: https://github.com/Azure/Actions
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples"build"
-ame: Build and Deploy to Azure Static Web Apps
+Name: Build and Deploy to Azure Static Web Apps
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
 
       - name: Build
         run: npm run build
-<<<<<<< HEAD
+
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: List build directory contents
@@ -55,13 +55,12 @@ jobs:
       - name: Archive build output
         run: zip -r build.zip frontend/build/
 
-=======
+
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH frontend
 
       - name: List build directory contents
          run: ls -la frontend/build
   
->>>>>>> eefa42630f4381c30afaac671882e1d3e7132468
       - name: Deploy to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -69,8 +68,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "frontend"
-<<<<<<< HEAD
+
           output_location: "build.zip"
-=======
+
           output_location: "build"
->>>>>>> eefa42630f4381c30afaac671882e1d3e7132468
+
