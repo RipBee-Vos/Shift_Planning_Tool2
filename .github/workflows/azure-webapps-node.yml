@@ -37,10 +37,9 @@ jobs:
         run: npm run build
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH frontend
 
-      - name: Debug: List build directory  # Fixed indentation issue on line 40
-        run: |
-          ls -la frontend/build
-
+      - name: List build directory contents
+         run: ls -la frontend/build
+  
       - name: Deploy to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
         with:
