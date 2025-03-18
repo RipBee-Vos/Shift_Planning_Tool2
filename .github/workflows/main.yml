@@ -31,11 +31,15 @@ jobs:
         run: npm run build
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
+      - name: List frontend directory contents after build
+        run: ls -la frontend
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
       - name: List build directory contents
         run: ls -la frontend/build
 
       - name: Archive build output
-        run: zip -r build.zip frontend/build/
+        run: zip -r build.zip build/
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Deploy to Azure Static Web App
@@ -45,4 +49,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "frontend"
-          output_location: "build.zip"  # Removed duplicate output_location
+          output_location: "build.zip"
