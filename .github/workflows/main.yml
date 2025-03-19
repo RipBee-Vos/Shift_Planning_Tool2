@@ -3,30 +3,32 @@ on:
     branches:
       - main
 AZURE_WEBAPP_NAME: shift-planning-frontend
-  AZURE_WEBAPP_PACKAGE_PATH: frontend
-  NODE_VERSION: '18.12.0'
+AZURE_WEBAPP_PACKAGE_PATH: frontend
+NODE_VERSION: '18.12.0'
 
-    defaults:
+defaults:
       run:
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}job
-s:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
+
+      build-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
       - name: Check out code
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-    output_location: bbuild
+        node-version: ${{ env.NODE_VERSION }}
+        output_location: bbuild
 
       - name: Install dependencies
         run: npm install
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-         name: Unset NODE_OPTIONS
-            rn: unset NODE_OPTIONS
+        
+      -  name: Unset NODE_OPTIONS
+         rn: unset NODE_OPTIONS
+       
       - name: Build
         run: npm run build
         
@@ -54,24 +56,39 @@ s:
 
           
 
-=======
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
-    - name: Install dependencies
-      run: npm install
-    - name: Build the React app
-      run: npm run build
-    - name: Deploy to Azure Static Web Apps
-      uses: Azure/static-web-apps-deploy@v1
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        action: "upload"
-        app_location: "/"
->>>>>>> 7e5d9242 (	new file:   .github/Shift_Planning_Tool2)
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the React app
+        run: npm run build
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/"        # Root of your app
+          api_location: ""         # If you have an API, set this path; otherwise leave empty
+          output_location: "build" # The folder where your build output is generated
