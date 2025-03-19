@@ -52,5 +52,5 @@ jobs:
 
           output_location: "build.zip"
 
-          output_location: "build.zip"
+          
 
