@@ -45,9 +45,9 @@ jobs:
           # Repository/Build Configurations - adjust to match your app requirements
           # For more info on Static Web App workflow configs, see https://aka.ms/swaworkflowconfig
           # --------------------------------------------------------------------------------
-          app_location: "/."         # App source code path
+          app_location: "frontend"         # App source code path
           api_location: ""           # API source code path (optional)
-          output_location: "build"   # Built app content directory (optional)
+          output_location: "frontend/build"   # Built app content directory (optional)
           github_id_token: ${{ steps.idtoken.outputs.result }}
           # --------------------------------------------------------------------------------
           # End of Repository/Build Configurations
