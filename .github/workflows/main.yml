@@ -25,7 +25,7 @@ s:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-    output_location: b.next
+    output_location: bbuild
 
       - name: Install dependencies
         run: npm install
