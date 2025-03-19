@@ -1,7 +1,7 @@
 {
-  "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/groceryheatmap": "pages/groceryheatmap.html",
+  "/_app": "pages/_app.js",
   "/": "pages/index.html",
   "/instructions": "pages/instructions.html",
   "/reports": "pages/reports.html",
