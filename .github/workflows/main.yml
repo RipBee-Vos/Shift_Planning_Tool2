@@ -30,7 +30,8 @@ s:
       - name: Install dependencies
         run: npm install
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
+         name: Unset NODE_OPTIONS
+            rn: unset NODE_OPTIONS
       - name: Build
         run: npm run build
         
