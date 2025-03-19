@@ -2,10 +2,7 @@ on:
   push:
     branches:
       - main
-<<<<<<< HEAD
-
-env:
-  AZURE_WEBAPP_NAME: shift-planning-frontend
+AZURE_WEBAPP_NAME: shift-planning-frontend
   AZURE_WEBAPP_PACKAGE_PATH: frontend
   NODE_VERSION: '18.12.0'
 
