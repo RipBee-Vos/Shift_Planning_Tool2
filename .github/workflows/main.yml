@@ -1,20 +1,26 @@
+name: Build and Deploy
+
 on:
   push:
-    branches:
-      - main
-<<<<<<< HEAD
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
+# Environment variables (optional, but keeps your config tidy)
 env:
   AZURE_WEBAPP_NAME: shift-planning-frontend
   AZURE_WEBAPP_PACKAGE_PATH: frontend
   NODE_VERSION: '18.12.0'
 
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    
+    # Defaults let you configure common settings for 'run:' commands
     defaults:
       run:
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}job
-s:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -23,58 +29,35 @@ s:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-    output_location: bbuild
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-         name: Unset NODE_OPTIONS
-            rn: unset NODE_OPTIONS
+
+      - name: Unset NODE_OPTIONS (if required by your build)
+        run: unset NODE_OPTIONS
+
       - name: Build
         run: npm run build
-        
 
       - name: List frontend directory contents after build
         run: ls -la build
-        
 
       - name: List build directory contents
-        run: ls -la frontend/build
+        # If you want to see what's inside 'frontend/build', you can remove
+        # the defaults.run.working-directory setting above and do this:
+        run: ls -la ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build
 
       - name: Archive build output
         run: zip -r build.zip build/
-        
 
-      - name: Deploy to Azure Static Web App
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
+          # Make sure you have the correct secret name set in GitHub
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "frontend"
-
+          # If you're actually uploading a folder, set 'build' or similar.
+          # Here, it's referencing a .zip file, as per your snippet.
           output_location: "build.zip"
-
-          
-
-=======
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
-    - name: Install dependencies
-      run: npm install
-    - name: Build the React app
-      run: npm run build
-    - name: Deploy to Azure Static Web Apps
-      uses: Azure/static-web-apps-deploy@v1
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        action: "upload"
-        app_location: "/"
->>>>>>> 7e5d9242 (	new file:   .github/Shift_Planning_Tool2)
