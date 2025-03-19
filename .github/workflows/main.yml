@@ -32,7 +32,7 @@ jobs:
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: List frontend directory contents after build
-        run: ls -la frontend
+        run: lrun: ls -la build
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: List build directory contents
