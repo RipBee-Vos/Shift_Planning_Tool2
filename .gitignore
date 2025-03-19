@@ -9,3 +9,5 @@ node_modules/
 frontend/node_modules/ 
 .next/ 
 allfiles.txt 
+
+.env
