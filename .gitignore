@@ -10,4 +10,5 @@ frontend/node_modules/
 .next/ 
 allfiles.txt 
 
-.env
+.env".next/" 
+"out/" 
