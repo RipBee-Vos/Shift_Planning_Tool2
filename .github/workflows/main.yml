@@ -11,7 +11,7 @@ on:
       - main
 
 env:
-  AZURE_WEBAPP_NAME: ShiftPlanningTool
+  AZURE_WEBAPP_NAME: ShiftPlanningTool2
   AZURE_WEBAPP_PACKAGE_PATH: 'dist'
   NODE_VERSION: '18.12.0'
 
