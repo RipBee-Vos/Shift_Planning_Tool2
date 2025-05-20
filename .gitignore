@@ -27,5 +27,7 @@ OneDrive*/
 *.ini
 NTUSER.*
 
-Shift_Planning_Tool2/
+# Build artifacts
+out/
+*.zip
 
