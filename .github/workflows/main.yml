@@ -12,7 +12,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: 'Shift-Planning-Tool2'
-  AZURE_WEBAPP_PACKAGE_PATH: '.next'
+  AZURE_WEBAPP_PACKAGE_PATH: 'out'
   NODE_VERSION: '18.12.0'
 
 jobs:
@@ -24,10 +24,6 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    
-    defaults:
-      run:
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     
     steps:
       - name: Check out code
@@ -49,10 +45,10 @@ jobs:
         run: npm run build
 
       - name: List build directory contents
-        run: ls -la build
+        run: ls -la ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Archive build output
-        run: zip -r build.zip build/
+        run: zip -r build.zip ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -60,7 +56,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "frontend"
+          app_location: "."
           output_location: "build.zip"
 
   close_pull_request_job:
