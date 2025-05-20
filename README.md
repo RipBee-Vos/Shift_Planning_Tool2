@@ -15,6 +15,9 @@ Required variables:
 - `DATABASE_ID`
 - `CONTAINER_ID`
 
+The Express server optionally respects a `PORT` variable to control which port
+it listens on. When not provided it defaults to `3000`.
+
 Example `.env` file:
 
 ```
@@ -29,10 +32,15 @@ repository.
 
 ## Running Locally
 
-This project uses Node.js version 20 as specified in `.nvmrc`. Ensure you are
-using this version (for example, run `nvm use`). Install dependencies with
-`npm install` and provide the required environment variables in a `.env` file as
-shown above.
+Before starting the application ensure that:
+
+- You are using **Node.js 20** (run `nvm use` to match the version in
+  `.nvmrc`).
+- A `.env` file exists with the variables from the [Environment Variables](#environment-variables)
+  section.
+- All dependencies are installed via `npm install`.
+
+### Start the servers
 
 1. Start the Express API server:
 
