@@ -1,0 +1,15 @@
+:root {
+  --walmart-blue: #0072ce;
+  --walmart-yellow: #ffc220;
+}
+
+.bg-walmart-blue {
+  background-color: var(--walmart-blue);
+}
+.text-walmart-blue {
+  color: var(--walmart-blue);
+}
+.bg-walmart-yellow {
+  background-color: var(--walmart-yellow);
+}
+/* etc. */
